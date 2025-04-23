@@ -1,0 +1,13 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [main]   # Only run when you push to main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest   # Use latest Ubuntu runner
+    steps:
+      - uses: actions/checkout@v2     # Step 1: Checkout code
+      - run: npm install              # Step 2: Install packages
+      - run: npm run build            # Step 3: Build the project

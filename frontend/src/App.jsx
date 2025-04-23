@@ -1,12 +1,18 @@
 import React from "react";
-import { Button } from "@chakra-ui/react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/ui/Navbar";
+import Home from "./pages/Home";
+import About from "./pages/About"
 
 function App() {
   return (
-    <div style={{ padding: "2rem" }}>
-      <h1>Hello Kevin</h1>
-      <Button colorScheme="teal">Chakra Works</Button>
-    </div>
+    <Router>
+    <Navbar/>
+      <Routes>
+        <Route path = "/" element={<Home />}></Route>
+        <Route path = "/about" element={<About />}></Route>
+      </Routes>
+    </Router>
   );
 }
 

@@ -1,12 +1,15 @@
 import React from "react";
 import SpinningCube from "../components/three/SpinningCube";
+import "../styles/home.css"
 
 const Home = () => {
   return (
-    <div style={{ padding: "2rem", background: "#f0f0f0", minHeight: "100vh" }}>
+    <>
+    <div className="home-container">
       <h1>Hello from Home!</h1>
-      <SpinningCube backgroundColor="#ffffff" />
+      <SpinningCube backgroundColor="#0f0f0f" />
     </div>
+    </>
   );
 };
 
