@@ -1,13 +1,13 @@
 import * as React from "react";
 import SpinningCube from "../components/three/SpinningCube";
 import "../styles/home.css";
+import { Box } from "@chakra-ui/react";
 
 const Home: React.FC = () => {
   return (
-    <div className="home-container">
-      <h1>Hello from Home!</h1>
-      <SpinningCube backgroundColor="#0f0f0f" />
-    </div>
+    <Box pt="100px" overflow={"hidden"}>
+      <SpinningCube/>
+    </Box>
   );
 };
 

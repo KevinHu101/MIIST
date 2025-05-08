@@ -1,9 +1,11 @@
 // SpinningCube.jsx
 import React, { useRef, useEffect } from "react";
 import * as THREE from "three";
+import { useColorMode } from "@chakra-ui/react";
 
-const SpinningCube = ({ backgroundColor = "skyblue" }) => {
-  const mountRef = useRef(null);
+const SpinningCube: React.FC = () => {
+  const mountRef = useRef<HTMLDivElement | null>(null);
+  const { colorMode } = useColorMode(); // 👈 Get light or dark
 
   useEffect(() => {
     const currentMount = mountRef.current;
@@ -18,7 +20,9 @@ const SpinningCube = ({ backgroundColor = "skyblue" }) => {
     const height = currentMount.clientHeight;
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(backgroundColor); // <-- dynamic!
+    scene.background = new THREE.Color(
+      colorMode === "light" ? "#e5e5e5" : "#0f0f0f"
+    ); // 👈 set based on mode
 
     const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -30,7 +34,7 @@ const SpinningCube = ({ backgroundColor = "skyblue" }) => {
     const cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
 
-    camera.position.z = 5;
+    camera.position.z = 3;
 
     const animate = () => {
       cube.rotation.x += 0.01;
@@ -45,12 +49,18 @@ const SpinningCube = ({ backgroundColor = "skyblue" }) => {
         currentMount.removeChild(renderer.domElement);
       }
     };
-  }, [backgroundColor]); // <--- TRIGGER effect when backgroundColor changes
+  }, [colorMode]); // 👈 re-run effect when color mode changes
 
   return (
     <div
       ref={mountRef}
-      style={{ width: "100%", height: "400px", marginTop: "20px" }}
+      style={{
+        width: "100vw",
+        height: "100vh",
+        margin: 0,
+        padding: 0,
+        overflow: "hidden",
+      }}
     />
   );
 };

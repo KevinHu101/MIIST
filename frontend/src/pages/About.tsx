@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from "react";
 const About: React.FC = () => {
   return <h1>About Page</h1>;
 };

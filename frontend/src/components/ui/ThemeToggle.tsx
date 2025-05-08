@@ -12,6 +12,11 @@ const ThemeToggle: FC = () => {
       icon={colorMode === "light" ? <MoonIcon boxSize={40} /> : <SunIcon boxSize={40}/>}
       onClick={toggleColorMode}
       variant="ghost"
+      color={colorMode === "light" ? "gray.400" : "white"}
+      _hover={{
+        bg: colorMode === "light" ? "gray.700" : "gray.700", // background on hover
+        color: colorMode === "light" ? "teal.500" : "yellow.300", // icon color on hover
+      }}
     />
   );
 };
