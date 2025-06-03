@@ -5,11 +5,12 @@ import {FC} from "react"
 
 const ThemeToggle: FC = () => {
   const { colorMode, toggleColorMode } = useColorMode();
+  const iconSize = 10;
 
   return (
     <IconButton
       aria-label="Toggle Dark Mode"
-      icon={colorMode === "light" ? <MoonIcon boxSize={40} /> : <SunIcon boxSize={40}/>}
+      icon={colorMode === "light" ? <MoonIcon boxSize={iconSize} /> : <SunIcon boxSize={iconSize}/>}
       onClick={toggleColorMode}
       variant="ghost"
       color={colorMode === "light" ? "gray.400" : "white"}
